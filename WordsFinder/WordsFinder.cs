@@ -9,7 +9,7 @@ namespace WordsFinder
         Dictionary<string, int> _words = new Dictionary<string, int>();
         Dictionary<string, int> _result = new Dictionary<string, int>();
        
-        //string _text;
+        
 
 
         

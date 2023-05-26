@@ -63,6 +63,25 @@ namespace WordsFinder
             return _result;
 
         }
+       public Dictionary<string, int> CountWordsWithParallel(string text)
+        {
+            
+            Parallel.ForEach(regex.Matches(text).Cast<Match>(), match =>
+            {
+                string Word = match.Value;
+                Word = Word.ToLower();
+                lock (_words)
+                {
+                    if (_words.ContainsKey(Word))
+                    {
+                        _words[Word]++;
+                    }
+                    else { _words.Add(Word, 1); }
+                }
+            });
+            SortWordsList();
+            return _result;
+        }
 
     }
 }
